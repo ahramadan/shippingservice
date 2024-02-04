@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/ahramadan/shipping-service.git
+    repoURL: https://github.com/ahramadan/shippingservice.git
     targetRevision: HEAD
     path: kube
   destination:
