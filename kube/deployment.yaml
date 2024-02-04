@@ -16,8 +16,8 @@ spec:
         app: shipping-service-app
     spec:
       containers:
-      - image: abushan/shipping-service
-        name: shipping-service
+      - image: abushan/shippingservice
+        name: shippingservice
         ports:
         - containerPort: 8080
           protocol: TCP
