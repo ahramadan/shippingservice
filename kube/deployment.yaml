@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: shipping-service-app
+  name: shipping-service-app
+  namespace: spring-boot-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shipping-service-app
+  template:
+    metadata:
+      labels:
+        app: shipping-service-app
+    spec:
+      containers:
+      - image: abushan/shipping-service
+        name: shipping-service
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+        imagePullPolicy: IfNotPresent
+        resources: 
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

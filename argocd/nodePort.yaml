@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: spring-boot-demo-nodeport
+  namespace: spring-boot-namespace
+  labels:
+    app: spring-boot-demo-app
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 30001
+  selector:
+    app: spring-boot-demo-app
